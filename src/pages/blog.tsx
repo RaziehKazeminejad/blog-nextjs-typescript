@@ -14,15 +14,15 @@ interface BlogProps {
     posts: PostPreview[]
   }
 
-const Blogs: NextPage<BlogProps> = () => {
+const Blogs: NextPage<BlogProps> = ({posts}) => {
 
     return (
         <div>
             <Layout pageTitle='Blog' />
             <div className="flex justify-center items-center">
               <div className="bg-white rounded-lg py-20">
-                {/* <PostListing posts={posts} /> */}
-                <p>blog page</p>
+                <PostListing posts={posts} />
+                {/* <p>blog page</p> */}
               </div>
             </div>
             <Footer />
@@ -33,26 +33,24 @@ const Blogs: NextPage<BlogProps> = () => {
 export default Blogs
 
 export const getServerSideProps = async ( ctx: GetServerSidePropsContext ) => {
+  const files = fs.readdirSync('src/_posts')
+  const posts = files.map((fname) => {
+  const md = fs.readFileSync(`src/_posts/${fname}`).toString()
+  const {data, excerpt} = matter(md, {excerpt_separator:'\n\n'})
+  return {
+    slug: fname.replace('.md', ''),
+    title: data.title,
+    excerpt,
+  }
+})
   try{
     const cookies = nookies.get(ctx);
     console.log(JSON.stringify(cookies, null, 2));
     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
     const { uid, email } = token;
-  //   const files = fs.readdirSync('src/_posts')
-  //   const posts = files.map((fname) => {
-  //   const md = fs.readFileSync(`src/_posts/${fname}`).toString()
-  //   const {data, excerpt} = matter(md, {excerpt_separator:'\n\n'})
-  //   return {
-  //     slug: fname.replace('.md', ''),
-  //     title: data.title,
-  //     excerpt,
-  //     message: `Your email is ${email} and your UID is ${uid}.`
-  //   }
-  // })
   return {
     props: {
-      message: `Your email is ${email} and your UID is ${uid}.`
-      // posts
+      posts
     }
   }
   }catch (err) {
