@@ -22,7 +22,7 @@ const Blogs: NextPage<BlogProps> = ({posts}) => {
             <div className="flex justify-center items-center">
               <div className="bg-white rounded-lg py-20">
                 <PostListing posts={posts} />
-                {/* <p>blog page</p> */}
+                <p>blog page</p>
               </div>
             </div>
             <Footer />
@@ -33,24 +33,25 @@ const Blogs: NextPage<BlogProps> = ({posts}) => {
 export default Blogs
 
 export const getServerSideProps = async ( ctx: GetServerSidePropsContext ) => {
-  const files = fs.readdirSync('src/_posts')
-  const posts = files.map((fname) => {
-  const md = fs.readFileSync(`src/_posts/${fname}`).toString()
-  const {data, excerpt} = matter(md, {excerpt_separator:'\n\n'})
-  return {
-    slug: fname.replace('.md', ''),
-    title: data.title,
-    excerpt,
-  }
-})
   try{
+    const files = fs.readdirSync('src/_posts')
+    const posts = files.map((fname) => {
+    const md = fs.readFileSync(`src/_posts/${fname}`).toString()
+    const {data, excerpt} = matter(md, {excerpt_separator:'\n\n'})
+    return {
+      slug: fname.replace('.md', ''),
+      title: data.title,
+      excerpt,
+    }
+  })
     const cookies = nookies.get(ctx);
     console.log(JSON.stringify(cookies, null, 2));
     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
     const { uid, email } = token;
   return {
     props: {
-      posts
+      posts,
+      message: `Your email is ${email} and your UID is ${uid}.`
     }
   }
   }catch (err) {
