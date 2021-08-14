@@ -37,20 +37,21 @@ export const getServerSideProps = async ( ctx: GetServerSidePropsContext ) => {
     console.log(JSON.stringify(cookies, null, 2));
     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
     const { uid, email } = token;
-    const files = fs.readdirSync('src/_posts')
-    const posts = files.map((fname) => {
-    const md = fs.readFileSync(`src/_posts/${fname}`).toString()
-    const {data, excerpt} = matter(md, {excerpt_separator:'\n\n'})
-    return {
-      slug: fname.replace('.md', ''),
-      title: data.title,
-      excerpt,
-      message: `Your email is ${email} and your UID is ${uid}.`
-    }
-  })
+  //   const files = fs.readdirSync('src/_posts')
+  //   const posts = files.map((fname) => {
+  //   const md = fs.readFileSync(`src/_posts/${fname}`).toString()
+  //   const {data, excerpt} = matter(md, {excerpt_separator:'\n\n'})
+  //   return {
+  //     slug: fname.replace('.md', ''),
+  //     title: data.title,
+  //     excerpt,
+  //     message: `Your email is ${email} and your UID is ${uid}.`
+  //   }
+  // })
   return {
     props: {
-      posts
+      message: `Your email is ${email} and your UID is ${uid}.`
+      // posts
     }
   }
   }catch (err) {
