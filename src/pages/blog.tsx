@@ -14,14 +14,15 @@ interface BlogProps {
     posts: PostPreview[]
   }
 
-const Blogs: NextPage<BlogProps> = ({posts}) => {
+const Blogs: NextPage<BlogProps> = () => {
 
     return (
         <div>
             <Layout pageTitle='Blog' />
             <div className="flex justify-center items-center">
               <div className="bg-white rounded-lg py-20">
-                <PostListing posts={posts} />
+                {/* <PostListing posts={posts} /> */}
+                <p>blog page</p>
               </div>
             </div>
             <Footer />
