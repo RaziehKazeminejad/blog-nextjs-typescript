@@ -15,7 +15,7 @@ interface BlogPostProps {
     }
 }
 
-const BlogPost: NextPage<BlogPostProps> = ({ frontmatter, content }) => {
+function blogPost() {
     return (
         <div>blog</div>
         // <Layout pageTitle={frontmatter.title}>
@@ -34,42 +34,42 @@ const BlogPost: NextPage<BlogPostProps> = ({ frontmatter, content }) => {
     )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-    const files = fs.readdirSync('src/_posts')
-    const paths = files.map((fname) => ({
-        params: {
-            slug: fname.replace('.md', ''),
-        },
-    }))
-    return {
-        paths,
-        fallback: false,
-    }
-}
+// export const getStaticPaths: GetStaticPaths = async () => {
+//     const files = fs.readdirSync('src/_posts')
+//     const paths = files.map((fname) => ({
+//         params: {
+//             slug: fname.replace('.md', ''),
+//         },
+//     }))
+//     return {
+//         paths,
+//         fallback: false,
+//     }
+// }
 
-export const getStaticProps: GetStaticProps<BlogPostProps> = async ({params}) => {
-    const slug = params?.slug
-    const md = fs.readFileSync(path.join('src/_posts', `${slug}.md`)).toString()
-    const {data, content, excerpt} = matter(md)
-    const date = data.date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      })
-    return {
-        props: {
-            frontmatter: {
-                title: data.title,
-                author: data.author,
-                date,
-            },
-            excerpt,
-            content,
-        }
-    }
-}
+// export const getStaticProps: GetStaticProps<BlogPostProps> = async ({params}) => {
+//     const slug = params?.slug
+//     const md = fs.readFileSync(path.join('src/_posts', `${slug}.md`)).toString()
+//     const {data, content, excerpt} = matter(md)
+//     const date = data.date.toLocaleDateString('en-US', {
+//         year: 'numeric',
+//         month: 'long',
+//         day: 'numeric',
+//       })
+//     return {
+//         props: {
+//             frontmatter: {
+//                 title: data.title,
+//                 author: data.author,
+//                 date,
+//             },
+//             excerpt,
+//             content,
+//         }
+//     }
+// }
 
-export default BlogPost
+export default blogPost
 
 /*export const getServerSideProps = async ({params}: any) => {
   const slug = params?.slug
