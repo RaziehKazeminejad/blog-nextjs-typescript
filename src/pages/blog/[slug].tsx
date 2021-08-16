@@ -33,21 +33,10 @@ const BlogPost: NextPage<BlogPostProps> = ({ frontmatter, content }) => {
     )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-    const files = fs.readdirSync('src/_posts')
-    const paths = files.map((fname) => ({
-        params: {
-            slug: fname.replace('.md', ''),
-        },
-    }))
-    return {
-        paths,
-        fallback: false,
-    }
-}
+export default BlogPost
 
-export const getStaticProps: GetStaticProps<BlogPostProps> = async ({params}) => {
-    const slug = params?.slug
+export const getServerSideProps = async ({params}: any) => {
+  const slug = params?.slug
     const md = fs.readFileSync(path.join('src/_posts', `${slug}.md`)).toString()
     const {data, content, excerpt} = matter(md)
     const date = data.date.toLocaleDateString('en-US', {
@@ -66,6 +55,4 @@ export const getStaticProps: GetStaticProps<BlogPostProps> = async ({params}) =>
             content,
         }
     }
-}
-
-export default BlogPost
+};

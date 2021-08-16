@@ -33,9 +33,8 @@ const Blogs: NextPage<BlogProps> = ({posts}) => {
 export default Blogs
 
 export const getServerSideProps = async ( ctx: GetServerSidePropsContext ) => {
-  try{
-    const files = fs.readdirSync('src/_posts')
-    const posts = files.map((fname) => {
+  const files = fs.readdirSync('src/_posts')
+  const posts = files.map((fname) => {
     const md = fs.readFileSync(`src/_posts/${fname}`).toString()
     const {data, excerpt} = matter(md, {excerpt_separator:'\n\n'})
     return {
@@ -44,16 +43,17 @@ export const getServerSideProps = async ( ctx: GetServerSidePropsContext ) => {
       excerpt,
     }
   })
+  try{
     const cookies = nookies.get(ctx);
     console.log(JSON.stringify(cookies, null, 2));
     const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
     const { uid, email } = token;
-  return {
-    props: {
-      posts,
-      message: `Your email is ${email} and your UID is ${uid}.`
+    return {
+      props: {
+        posts,
+        message: `Your email is ${email} and your UID is ${uid}.`
+      }
     }
-  }
   }catch (err) {
     return {
       redirect: {
