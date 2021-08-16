@@ -17,19 +17,20 @@ interface BlogPostProps {
 
 const BlogPost: NextPage<BlogPostProps> = ({ frontmatter, content }) => {
     return (
-        <Layout pageTitle={frontmatter.title}>
-            <div>
-            <div className="mx-40 ">
-            <div className="px-4 pt-12 pb-12">
-                <div className=" text-center">
-                    <h1 className="font-serif font-semibold text-green-500 text-2xl pb-6">{frontmatter.title}</h1>
-                    <h1 className="font-serif text-sm text-gray-400 pb-5">Author: {frontmatter.author}</h1>
-                </div>
-                <ReactMarkdown className="bg-green-50 p-10 rounded-xl" children={content} />
-                </div>
-                </div>
-            </div>
-        </Layout>
+        <div>blog</div>
+        // <Layout pageTitle={frontmatter.title}>
+        //     <div>
+        //     <div className="mx-40 ">
+        //     <div className="px-4 pt-12 pb-12">
+        //         <div className=" text-center">
+        //             <h1 className="font-serif font-semibold text-green-500 text-2xl pb-6">{frontmatter.title}</h1>
+        //             <h1 className="font-serif text-sm text-gray-400 pb-5">Author: {frontmatter.author}</h1>
+        //         </div>
+        //         <ReactMarkdown className="bg-green-50 p-10 rounded-xl" children={content} />
+        //         </div>
+        //         </div>
+        //     </div>
+        // </Layout>
     )
 }
 
