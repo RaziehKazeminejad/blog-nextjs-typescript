@@ -9,7 +9,7 @@ const AppLink: React.FC<AppLinkProps> = ({href, lable}) => {
     return (
         <div>
             <Link href={href}>
-                <a className="block rounded-md">{lable}</a>
+                <a className="px-3 py-2 flex items-center text-xs lg:text-sm uppercase font-bold leading-snug text-white hover:opacity-75">{lable}</a>
             </Link>
         </div>
     )
