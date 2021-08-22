@@ -5,36 +5,33 @@ const Login = (_props:any) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   return (
-    <div className="bg-gray-200">
-      <div className="h-screen flex justify-center items-center">
-        <div className="bg-white rounded-lg w-2/5 px-16 py-16">
-          <h2 className="text-2xl text-center text-green-700 mb-10 font-serif">Login Form</h2>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              E-Mail
-            </label>
-            <input
-              className="mb-2 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-green-600 focus:border-green-600 focus:z-10 sm:text-sm"
-              type={'email'}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder={'Email'}
-            />
-          </div>
-          <div className="mb-8">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Password
-            </label>
-            <input
-            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-green-600 focus:border-green-600 focus:z-10 sm:text-sm"
-              type={'password'}
-              value={pass}
-              onChange={(e) => setPass(e.target.value)}
-              placeholder={'Password'}
-            />
-          </div>
+    <div className="w-full flex flex-wrap pt-20">
+      <div className="w-full md:w-1/2 flex flex-col">
+        <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
+          <p className="text-center text-3xl">Welcome.</p>
+          <div className="flex flex-col pt-3 md:pt-8">
+            <div className="flex flex-col pt-4">
+              <label className="text-lg">E-Mail</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Email"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                onChange={(e) => setEmail(e.target.value)}  
+              />
+            </div>
+            <div className="flex flex-col pt-4">
+              <label className="text-lg">Password</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" 
+                onChange={(e) => setPass(e.target.value)}
+              />
+            </div>
             <button
-              className="w-full py-1 rounded-full bg-green-600 text-gray-100 mb-2 focus:outline-none"
+              className="bg-blue-800 rounded text-white font-bold text-sm hover:bg-blue-700 p-2 mt-8"
               onClick={async () => {
                 await firebaseClient.auth().signInWithEmailAndPassword(email, pass);
                 window.location.href = '/blog';
@@ -43,7 +40,7 @@ const Login = (_props:any) => {
               Log in
             </button>
             <button
-              className="w-full py-1 rounded-full bg-green-600 text-gray-100  focus:outline-none"
+              className="bg-blue-800 rounded text-white font-bold text-sm hover:bg-blue-700 p-2 mt-8"
               onClick={async () => {
                 await firebaseClient
                   .auth()
@@ -53,7 +50,12 @@ const Login = (_props:any) => {
             >
               Create account
             </button>
+          </div>
         </div>
+      </div>
+
+      <div className="w-1/2 pt-28">
+        <img className="object-cover w-full hidden md:block" src="https://eskooly.com/bb/asserts/images/illustrations/drawings/login4.png"/>
       </div>
     </div>
   );
