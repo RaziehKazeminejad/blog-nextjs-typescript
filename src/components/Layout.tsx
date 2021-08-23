@@ -17,7 +17,7 @@ const Layout: React.FC<LayoutProps> = ({pageTitle}) => {
                 <title>Next.js | {pageTitle}</title>
             </Head>
             <div>
-                <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-blue-500 mb-3">
+                <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-indigo-900 mb-3">
                     <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
                         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
                             <AppLink href="/" lable='Next.js Blog' />
