@@ -2,55 +2,45 @@ import React from 'react'
 
 const contact = () => {
     return (
-        <div className="lg:flex pr-60 items-center lg:text-left w-full justify-between mt-16 text-center">
-            <div className="pl-40">
-                <div className=" rounded-lg  px-16 py-16">
-                    <form className="w-full max-w-lg">
-                        <h2 className="text-2xl text-center text-green-700 mb-10 font-serif">Contact Us</h2>
-                        <div className="flex flex-wrap -mx-3 mb-6">
-                            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                    First Name
-                                </label>
-                                <input className="appearance-none block w-full bg-green-50 text-gray-700 border border-green-100 rounded py-3 px-4 leading-tight focus:outline-none focus:border-green-200" id="grid-last-name" type="text" placeholder="John" />
-                            </div>
-                            <div className="w-full md:w-1/2 px-3">
-                                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                    Last Name
-                                </label>
-                                <input className="appearance-none block w-full bg-green-50 text-gray-700 border border-green-100 rounded py-3 px-4 leading-tight focus:outline-none focus:border-green-200" id="grid-last-name" type="text" placeholder="Doe" />
-                            </div>
-                        </div>
-                        <div className="flex flex-wrap -mx-3 mb-6">
-                            <div className="w-full px-3">
-                                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                    E-mail
-                                </label>
-                                <input className="appearance-none block w-full bg-green-50 text-gray-700 border border-green-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-green-200" id="email" type="email" />
-                            </div>
-                        </div>
-                        <div className="flex flex-wrap -mx-3 mb-6">
-                            <div className="w-full px-3">
-                                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                    Message
-                                </label>
-                                <textarea className=" no-resize appearance-none block w-full bg-green-50 text-gray-700 border border-green-100 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-green-200 h-48 resize-none" id="message"></textarea>
-                            </div>
-                        </div>
-                        <div className="md:flex md:items-center">
-                            <div className="md:w-1/3">
-                                <button className="shadow bg-green-400 hover:bg-green-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-                                    Send
-                                </button>
+        <>
+            <div className="container mx-auto flex flex-col md:flex-row md:my-48">
+                <div className="flex flex-col w-full lg:w-1/3 p-8 lg:pl-48">
+                    <div className="text-sm pb-10 tracking-loose underline font-serif">
+                        <a href="/">Back to Home</a>
+                    </div>
+                    <p className="text-3xl font-bold font-serif md:text-5xl mb-10 leading-relaxed md:leading-snug">Contact us</p>
+                    <p className="text-sm font-serif md:text-base leading-snug text-opacity-100">Please provide your valuable feedback. Fill in the form to start a conversation :)</p>
+                </div>
+                <div className="flex flex-col w-full lg:w-2/3 justify-center">
+                    <div className="container w-full px-4">
+                        <div className="flex flex-wrap justify-center">
+                            <div className="w-full lg:w-6/12 px-4">
+                                <div className="relative flex flex-col text-white min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-indigo-700">
+                                    <div className="flex-auto p-5 lg:p-10">
+                                        <h4 className="text-2xl mb-4 font-semibold">Have a suggestion?</h4>
+                                        <form id="feedbackForm" action="" method="">
+                                            <div className="relative w-full mb-3">
+                                                <label className="block uppercase text-xs font-bold mb-2">Email</label>
+                                                <input type="email" name="email" id="email" className="border-0 px-3 py-3 rounded text-sm shadow w-full bg-gray-300 placeholder-black text-gray-800 outline-none" required />
+                                            </div>
+                                            <div className="relative w-full mb-3">
+                                                <label className="block uppercase text-xs font-bold mb-2">Message</label>
+                                                <textarea name="feedback" id="feedback" className="border-0 px-3 py-3 bg-gray-300 placeholder-black text-gray-800 rounded text-sm shadow focus:outline-none w-full" placeholder="" required></textarea>
+                                            </div>
+                                            <div className="text-center mt-6">
+                                                <button id="feedbackBtn" className="bg-indigo-500 text-white text-center mx-auto active:bg-yellow-400 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 transition: all 0.15s ease 0s;" type="submit" >
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-            <div className="mt-8 lg:mt-0 ">
-            <img className="w-full h-96 " src="https://stories.freepiklabs.com/storage/12682/blog-post-bro-828.png" alt=""/>
-            </div>
-        </div>
+        </>
     )
 }
 
