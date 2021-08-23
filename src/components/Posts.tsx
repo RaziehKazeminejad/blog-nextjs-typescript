@@ -1,8 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import PostsImage from "../../public/Posts.png"
-
+ 
 export interface TypeData {
   id: string;
   title: string;
@@ -16,7 +14,7 @@ export default function Posts({ id, title, date, author }: TypeData) {
     <div>
       <Link href={`/blog/${id}`}>
         <a>
-          <Image alt="Placeholder" className="block h-auto w-full" src={PostsImage} />
+          <img alt="Placeholder" className="block h-auto w-full" src="https://bs-uploads.toptal.io/blackfish-uploads/blog/article/content/cover_image_file/cover_image/14144/op-Ten-Front-End-Design-Rules-For-Developers_Luke-Newsletter-d3a7d3e7430ee224cab75104f11342a0.png" />
         </a>
       </Link>
       <header className="flex items-center justify-between leading-tight p-2 md:p-4">

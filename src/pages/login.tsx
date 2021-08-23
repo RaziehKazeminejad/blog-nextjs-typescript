@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { firebaseClient } from '../lib/firebaseClient';
-import Image from 'next/image';
-import LoginImage from "../../public/Login.png"
 
 const Login = (_props:any) => {
   const [email, setEmail] = useState('');
@@ -57,7 +55,7 @@ const Login = (_props:any) => {
       </div>
 
       <div className="w-1/2 pt-28">
-        <Image className="object-cover w-full hidden md:block" src={LoginImage}/>
+        <img className="object-cover w-full hidden md:block" src="https://eskooly.com/bb/asserts/images/illustrations/drawings/login4.png"/>
       </div>
     </div>
   );
