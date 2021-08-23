@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
+import Image from 'next/image'
+import LandingPageImage from '../../public/LandingPage.png'
 
 export default function LandingPage() {
   return (
@@ -22,7 +24,7 @@ export default function LandingPage() {
         </div>
       </div>
       <div className="w-1/2 pt-5 lg:pt-28">
-        <img className="object-cover w-full hidden md:block" src="https://www.bizzmine.com/images/articles/careers/Front-end-developer.png"/>
+        <Image className="object-cover w-full hidden md:block" src={LandingPageImage} alt="LandingPageImage"/>
       </div>
     </div>
   )
