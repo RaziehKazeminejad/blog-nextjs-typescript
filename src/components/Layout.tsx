@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React, { useState } from 'react'
 import AppLink from './AppLink'
-import firebase from "firebase";
+import firebase from "firebase/app";
 
 interface LayoutProps {
     pageTitle: string
