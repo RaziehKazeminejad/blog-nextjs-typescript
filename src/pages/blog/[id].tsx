@@ -8,18 +8,20 @@ export default function postPage({  title, date, author, content }: TypeData) {
     return (
       <div>
         <Layout pageTitle='Blog' />
-        <div>
-          <div className="mx-40 ">
-            <div className="px-4 pt-12 pb-12">
-              <div className=" text-center">
-                <h1 className="font-serif font-semibold text-green-500 text-2xl pb-6">{title}</h1>
-                <h1 className="font-serif text-sm text-gray-400 pb-1">Author: {author}</h1>
-                <h1 className="font-serif text-xs text-gray-400 pb-5">{date}</h1>
-              </div>
-              <div className="bg-green-50 p-10 rounded-xl">{content}</div>
+        <div className="grid place-items-center h-screen">
+          <div className="flex flex-col gap-11 py-10 px-5 bg-white rounded-md  md:max-w-2xl">
+            <div className="text-indigo-500 flex flex-col justify-between">
+              <img src="https://bs-uploads.toptal.io/blackfish-uploads/blog/article/content/cover_image_file/cover_image/14144/op-Ten-Front-End-Design-Rules-For-Developers_Luke-Newsletter-d3a7d3e7430ee224cab75104f11342a0.png" alt="" />
+            </div>
+            <div>
+              <h3 className="uppercase font-serif font-semibold text-black text-2xl pb-3">{title}</h3>
+              <p className="font-serif text-sm text-gray-400 pb-2">Author: {author}</p>
+              <p className="font-serif text-xs text-gray-400 mb-10">{date}</p>
+              <p className="text-black">{content}</p>
             </div>
           </div>
         </div>
+        
       </div>
     );
 }

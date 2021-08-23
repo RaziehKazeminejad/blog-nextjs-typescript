@@ -12,21 +12,20 @@ const blogs = () => {
     return (
       <div>
         <Layout pageTitle='Blog' />
-        <div className="flex justify-center items-center">
-          <div className="bg-white rounded-lg py-20">
-            <div className="flex flex-row">
+        <div className="container my-12 mx-auto px-4 md:px-12">
+          <div className="flex flex-wrap -mx-1 lg:-mx-4">
               {PostsBlog.map((item: TypeData) => (
-                <div className="mx-10 bg-green-50 bg-cover bg-center rounded-lg">
-                  <div className="px-4 pt-12 pb-12">
-                    <div className="flex flex-row" key={item.id}>
+        <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+            <article className="overflow-hidden rounded-lg shadow-lg">
+                    <div key={item.id}>
                       <Posts {...item} />
                     </div>
-                  </div>
-                </div>
+                  
+              </article>
+              </div>
               ))}
-            </div>
-          </div>
-        </div>
+              </div>
+              </div>
         <Footer />
       </div>
     );
